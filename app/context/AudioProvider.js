@@ -1,15 +1,16 @@
 import React, { Component, createContext } from "react";
 import { Alert } from "react-native";
 import * as MediaLibrary from "expo-media-library";
-
+import { DataProvider } from "recyclerlistview";
 
 export const AudioContext = createContext();
 export class AudioProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        audioFiles: [],
-        permissionError: false
+      audioFiles: [],
+      permissionError: false,
+      dataProvider: new DataProvider((r1, r2) => r1 !== r2),
     };
   }
 
@@ -35,18 +36,23 @@ export class AudioProvider extends Component {
 
   // Get audio files from user
   getAudioFiles = async () => {
+    const { dataProvider, audioFiles } = this.state;
     let media = await MediaLibrary.getAssetsAsync({
-      mediaType: 'video'
+      mediaType: "video",
     });
 
     media = await MediaLibrary.getAssetsAsync({
-      mediaType: 'video',
+      mediaType: "video",
       first: media.totalCount,
     });
-      this.setState({...this.state, audioFiles: media.assets})
+    this.setState({
+      ...this.state,
+      dataProvider: dataProvider.cloneWithRows([...audioFiles, ...media.assets]),
+      audioFiles: [...audioFiles, ...media.assets],
+    });
   };
 
-  getPermission = async () => { 
+  getPermission = async () => {
     //  {
     //   "accessPrivileges": "none",
     //   "canAskAgain": true,
@@ -62,12 +68,11 @@ export class AudioProvider extends Component {
     if (permission.granted) {
       // read all audio files
       this.getAudioFiles();
-      }
-      
-      if (!permission.canAskAgain && !permission.granted) {
-          this.setState({...this.state, permissionError: true})
-          
-      }
+    }
+
+    if (!permission.canAskAgain && !permission.granted) {
+      this.setState({ ...this.state, permissionError: true });
+    }
 
     // if permission has not been granted and permission can be asked again
     if (!permission.granted && permission.canAskAgain) {
@@ -89,7 +94,7 @@ export class AudioProvider extends Component {
       // if status has been denied and can not ask again is false
       if (status === "denied" && !canAskAgain) {
         // then display an error msg
-          this.setState({...this.state, permissionError: true})
+        this.setState({ ...this.state, permissionError: true });
       }
     }
   };
@@ -98,26 +103,33 @@ export class AudioProvider extends Component {
     this.getPermission();
   }
 
-    render() {
-        if (this.state.permissionError) {
-            return (
-                <View style={{
-                    flex: 1,
-                    alignItems: 'center',
-                    justifyContent:'center'
-                }}>
-                    <Text style={{
-                        fontSize: 25,
-                        alignItems: 'center',
-                        color: 'red'
-                    }}>
-                        It seems you haven't granted this app the permission
-                    </Text>
-              </View>
-          )
-      }
+  render() {
+    //destructure audio files
+    const {audioFiles, dataProvider, permissionError} = this.state
+
+    if (permissionError) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 25,
+              alignItems: "center",
+              color: "red",
+            }}
+          >
+            It seems you haven't granted this app the permission
+          </Text>
+        </View>
+      );
+    }
     return (
-      <AudioContext.Provider value={{audioFiles: this.state.audioFiles}}>
+      <AudioContext.Provider value={{ audioFiles, dataProvider }}>
         {this.props.children}
       </AudioContext.Provider>
     );

@@ -1,15 +1,16 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const WIDTH = Dimensions.get("window").width;
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems:"center"
-    },
+
     title: {
         padding: 10,
         borderBottomColor: "red",
         borderBottomWidth: 2,
+    },
+    linear: {
+        flex:1
     }
     
 });

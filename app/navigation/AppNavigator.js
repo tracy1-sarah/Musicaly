@@ -1,5 +1,4 @@
 import React from 'react'
-import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import AudioList from '../screens/audiolist'
 import Player from '../screens/player'
