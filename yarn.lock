@@ -1646,6 +1646,11 @@
     prompts "^2.4.0"
     semver "^6.3.0"
 
+"@react-native-community/slider@4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.2.3.tgz#7ed4f00ca2c50c666c47a59205b3df031d2588eb"
+  integrity sha512-qPkrAy883tSPoRWgGZjqL5tYnd4AmNLYNtjvtD9G6JMYtImxK4ITa/W8zOEgR8UOrPde/t+VN0MMxL63HZZK1Q==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.npmjs.org/@react-native/assets/-/assets-1.0.0.tgz"
@@ -2964,6 +2969,13 @@ expo-asset@~8.6.1:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-av@~12.0.4:
+  version "12.0.4"
+  resolved "https://registry.npmjs.org/expo-av/-/expo-av-12.0.4.tgz"
+  integrity sha512-wq3wx6J1aacZEPZce9TK1+o4YTAOWyb5cJ4CqfsgHcXeUdHyO3qbva/5uecigpEYlCxOlWYFhAz2T0dQ7nWSpQ==
+  dependencies:
+    "@expo/config-plugins" "~5.0.0"
+
 expo-constants@~13.2.2, expo-constants@~13.2.4:
   version "13.2.4"
   resolved "https://registry.npmjs.org/expo-constants/-/expo-constants-13.2.4.tgz"
@@ -2999,7 +3011,7 @@ expo-keep-awake@~10.2.0:
 
 expo-linear-gradient@~11.4.0:
   version "11.4.0"
-  resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-11.4.0.tgz#20ecad4d11e66e35b31600e5389ec9c4067f7312"
+  resolved "https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-11.4.0.tgz"
   integrity sha512-qtIfsLs7NOpfxYrFSJL5uLtNHIkBHQFuQ3f7++XpoJTSm4eQVFxjjkCGWiLIrkpVjKzmgp3DLuIVsadsGX21lA==
 
 expo-media-library@~14.2.0:
@@ -5180,9 +5192,9 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-promise@^8.0.3:
+promise@^8.2.0:
   version "8.2.0"
-  resolved "https://registry.npmjs.org/promise/-/promise-8.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-8.2.0.tgz#a1f6280ab67457fbfc8aad2b198c9497e9e5c806"
   integrity sha512-+CMAlLHqwRYwBMXKCP+o8ns7DN+xHDUiI+0nArsiJ9y+kJVPLFxEaSw6Ha9s9H0tftxg2Yzl25wqj9G7m5wLZg==
   dependencies:
     asap "~2.0.6"
@@ -5318,10 +5330,10 @@ react-native-screens@~3.15.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native@0.69.5:
-  version "0.69.5"
-  resolved "https://registry.npmjs.org/react-native/-/react-native-0.69.5.tgz"
-  integrity sha512-4Psrj1nDMLQjBXVH8n3UikzOHQc8+sa6NbxZQR0XKtpx8uC3HiJBgX+/FIum/RWxfi5J/Dt/+A2gLGmq2Hps8g==
+react-native@0.69.6:
+  version "0.69.6"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.69.6.tgz#cdd1a5757d902b91b165c28fdda4e518ed6f683a"
+  integrity sha512-wwXpqM+12kdEYdBZCJUb5SBu95CzgejrwFeYJ78RzHZV/Sj6DBRekbsHGrDDsY4R25QXALQxy4DQYQCObVvWjA==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^8.0.4"
@@ -5344,7 +5356,7 @@ react-native@0.69.5:
     mkdirp "^0.5.1"
     nullthrows "^1.1.1"
     pretty-format "^26.5.2"
-    promise "^8.0.3"
+    promise "^8.2.0"
     react-devtools-core "4.24.0"
     react-native-codegen "^0.69.2"
     react-native-gradle-plugin "^0.0.7"

@@ -3,8 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import AudioList from '../screens/audiolist'
 import Player from '../screens/player'
 import PlayList from '../screens/playlist'
-import { MaterialIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator()
 
@@ -15,6 +14,7 @@ export default function AppNavigator() {
           name="AudioList"
           component={AudioList}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="headset" size={size} color={color} />
             ),
@@ -24,6 +24,7 @@ export default function AppNavigator() {
           name="Player"
           component={Player}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="compact-disc" size={size} color={color} />
             ),
@@ -33,6 +34,7 @@ export default function AppNavigator() {
           name="PlayList"
           component={PlayList}
           options={{
+            headerShown: false,
             tabBarIcon: ({color, size}) => (
               <MaterialIcons name="library-music" size={size} color={color} />
             ),
